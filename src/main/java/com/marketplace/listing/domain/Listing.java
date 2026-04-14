@@ -35,6 +35,10 @@ public class Listing extends AggregateRoot {
     private String subcategory;
 
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "amount", column = @Column(name = "price_amount")),
+        @AttributeOverride(name = "currency", column = @Column(name = "price_currency"))
+    })
     private Money price;
 
     @Column(length = 50)

@@ -36,6 +36,10 @@ public class Booking extends AggregateRoot {
     private Instant endDate;
 
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "amount", column = @Column(name = "total_price_amount", nullable = false)),
+        @AttributeOverride(name = "currency", column = @Column(name = "total_price_currency", nullable = false))
+    })
     private Money totalPrice;
 
     @Column(nullable = false, length = 50)

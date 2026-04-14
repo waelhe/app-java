@@ -42,8 +42,6 @@ public class Dispute extends AggregateRoot {
 
     private Instant resolvedAt;
 
-    private Instant createdAt;
-
     /**
      * Opens the dispute for review. Transitions from OPEN to UNDER_REVIEW.
      */
@@ -87,9 +85,6 @@ public class Dispute extends AggregateRoot {
 
     @PrePersist
     protected void onCreate() {
-        if (this.createdAt == null) {
-            this.createdAt = Instant.now();
-        }
         if (this.status == null) {
             this.status = DisputeStatus.OPEN;
         }
