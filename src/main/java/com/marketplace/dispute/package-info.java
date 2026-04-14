@@ -1,5 +1,4 @@
-@ApplicationModule(type = ModuleType.OPEN, displayName = "Dispute")
+@ApplicationModule(displayName = "Dispute")
 package com.marketplace.dispute;
 
-import org.springframework.modulith.ModuleType;
 import org.springframework.modulith.ApplicationModule;

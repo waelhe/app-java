@@ -22,7 +22,7 @@ public class BookingService {
         if (request.startDate().isAfter(request.endDate())) {
             throw new BusinessException("Start date must be before end date");
         }
-        if (request.consumerId().equals(consumerId)) {
+        if (request.providerId().equals(consumerId)) {
             throw new BusinessException("Consumer cannot book their own listing");
         }
 
