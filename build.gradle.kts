@@ -8,8 +8,8 @@ group = "com.marketplace"
 version = "0.0.1-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_26
+    targetCompatibility = JavaVersion.VERSION_26
 }
 
 repositories {
@@ -24,7 +24,7 @@ extra["resilience4jVersion"] = "2.3.0"
 extra["bucket4jVersion"] = "8.10.1"
 extra["springdocVersion"] = "2.8.4"
 extra["mapstructVersion"] = "1.6.3"
-extra["lombokVersion"] = "1.18.34"
+extra["lombokVersion"] = "1.18.40"
 
 dependencies {
     // ── Spring Boot Starters ──
@@ -106,4 +106,18 @@ tasks.withType<JavaCompile> {
         "-Amapstruct.defaultComponentModel=spring",
         "-Amapstruct.unmappedTargetPolicy=IGNORE"
     ))
+    options.isFork = true
+    options.forkOptions.jvmArgs = listOf(
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
+        "--add-opens", "jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED",
+        "--enable-final-field-mutation=ALL-UNNAMED"
+    )
 }
