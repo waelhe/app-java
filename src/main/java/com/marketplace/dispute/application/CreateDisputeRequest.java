@@ -1,0 +1,13 @@
+package com.marketplace.dispute.application;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.util.UUID;
+
+public record CreateDisputeRequest(
+    @NotNull UUID bookingId,
+    @NotNull UUID respondentId,
+    @NotBlank @Size(max = 1000) String reason
+) {}
